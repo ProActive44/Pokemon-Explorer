@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import PokemonCard from "./Components/PokemonCard"
 
 type PokemonDetail = {
   id: number;
@@ -63,7 +64,7 @@ type Pokemon = {
 }
 
 const fetchData = async() : Promise<Pokemon[]> => {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
     const data = await res.json();
     return data.results;
 }
@@ -111,13 +112,8 @@ function Home() {
     <div>
       <h1>Explore Pokemon</h1>
       <ul>
-        {data?.map((pokemon, index)=>{
-          return <li key={index}>
-              <div>
-                <h3>{pokemon.name}</h3>
-                <img src={pokemon.details.sprites.front_default}/>
-              </div>
-            </li>
+        {data?.map((pokemon)=>{
+          return <PokemonCard key={pokemon.details.id} pokemon={pokemon}/>
         })}
       </ul>
     </div>
