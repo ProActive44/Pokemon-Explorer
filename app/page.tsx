@@ -1,10 +1,65 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
+type PokemonDetail = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    };
+    is_hidden: boolean;
+    slot: number;
+  }[];
+  sprites: {
+    front_default: string;
+    front_shiny: string;
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+      home: {
+        front_default: string;
+      };
+      dream_world: {
+        front_default: string;
+      };
+    };
+  };
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }[];
+  types: {
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  }[];
+  species: {
+    name: string;
+    url: string;
+  };
+  moves: {
+    move: {
+      name: string;
+      url: string;
+    };
+  }[];
+}
+
 type Pokemon = {
   name: string,
   url: string,
-  image: string
+  details: PokemonDetail
 }
 
 const fetchData = async() : Promise<Pokemon[]> => {
@@ -13,10 +68,10 @@ const fetchData = async() : Promise<Pokemon[]> => {
     return data.results;
 }
 
-const fetchPokemonDetails = async(url:string) : Promise<string> => {
+const fetchPokemonDetails = async(url:string) : Promise<PokemonDetail> => {
     const res = await fetch(url);
     const data = await res.json();
-    return data.sprites.front_default;
+    return data;
 }
 
 
@@ -32,8 +87,8 @@ function Home() {
             const pokemonData = await fetchData();
 
             const pokemonWithImagesPromises = pokemonData.map(async(pokemon)=>{
-                const image = await fetchPokemonDetails(pokemon.url);
-                return {...pokemon, image};
+                const details = await fetchPokemonDetails(pokemon.url);
+                return {...pokemon, details};
             })
 
             const pokemonWithImages = await Promise.all(pokemonWithImagesPromises);
@@ -54,13 +109,13 @@ function Home() {
     console.log(data);
   return (
     <div>
-      <h1>Pokemon List</h1>
+      <h1>Explore Pokemon</h1>
       <ul>
         {data?.map((pokemon, index)=>{
           return <li key={index}>
               <div>
                 <h3>{pokemon.name}</h3>
-                <img src={pokemon.image}/>
+                <img src={pokemon.details.sprites.front_default}/>
               </div>
             </li>
         })}
