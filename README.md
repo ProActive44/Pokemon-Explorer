@@ -17,14 +17,13 @@ Check out the deployed version of the app: 🔗 🔗 **[Pokémon Explorer](https
 * Uses **Next.js dynamic routing** (`/pokemon/[id]`).
 
 ### ⚡ Performance Optimizations
-* **Static Generation (SSG)** with `getStaticProps` and `getStaticPaths` for fast page loads.
 * Optimized images using **Next.js Image component**.
 
 ## 🛠️ Installation & Setup
 
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/your-username/pokemon-explorer.git
+git clone https://github.com/ProActive44/next-app.git
 cd next-app
 ```
 
