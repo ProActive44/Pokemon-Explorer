@@ -7,7 +7,7 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearchChange }) => {
   return (
-    <div className="w-1/2 m-auto">
+    <div className="w-full md:w-1/2 m-auto">
       <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"

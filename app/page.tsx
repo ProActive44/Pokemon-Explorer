@@ -120,7 +120,7 @@ function Home() {
   return (
     <div className='bg-gray-200 p-2 px-4'>
       
-      <div className='w-1/2 m-auto flex justify-center h-10 mt-10'>
+      <div className='w-full md:w-1/2 m-auto flex justify-center h-10 mt-10'>
         <h1>Explore Pokemon</h1>
       </div>
       
