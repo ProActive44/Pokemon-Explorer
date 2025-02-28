@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-const PokemonCard = ({pokemon}) => {
+import {Pokemon} from "../page"
+
+type PokemonCardProps = {
+  pokemon: Pokemon;
+};
+
+const PokemonCard : React.FC<PokemonCardProps>= ({pokemon}) => {
 
   const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.details.id}.png`;
 

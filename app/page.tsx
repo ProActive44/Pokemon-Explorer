@@ -61,7 +61,7 @@ type PokemonDetail = {
   }[];
 }
 
-type Pokemon = {
+export type Pokemon = {
   name: string,
   url: string,
   details: PokemonDetail
@@ -127,7 +127,7 @@ function Home() {
       
       {/* Searchbox */}
       <div className=''>
-          <div className="mb-8 animate-fade-in opacity-1" style={{ animationDelay: "400ms", animationFillMode: "forwards" }}>
+          <div className="mb-8">
               <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
           </div>
       </div>
@@ -135,13 +135,13 @@ function Home() {
       {/* All Pokemons */}
         {
           loading? <LoadingSpinner/> : 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-6  animate-fade-in">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-6 opacity-0 animate-fade-in">
             {data
             ?.filter((pokemon) =>
               pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((pokemon, idx) => (
-              <div key={pokemon.details.id}>
+              <div key={pokemon.details?.id}>
                 <PokemonCard pokemon={pokemon} />
               </div>
             ))}
