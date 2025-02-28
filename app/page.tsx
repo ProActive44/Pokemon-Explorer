@@ -119,7 +119,7 @@ function Home() {
 
     console.log(data);
   return (
-    <div className='bg-gray-200 p-2'>
+    <div className='bg-gray-200 p-2 px-4'>
       
       <div className='w-1/2 m-auto flex justify-center h-10 mt-10'>
         <h1>Explore Pokemon</h1>
@@ -135,15 +135,17 @@ function Home() {
       {/* All Pokemons */}
         {
           loading? <LoadingSpinner/> : 
-          <ul className='grid grid-cols-5 gap-5'>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-6  animate-fade-in">
             {data
             ?.filter((pokemon) =>
               pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
-            .map((pokemon) => (
-              <PokemonCard key={pokemon.details.id} pokemon={pokemon} />
+            .map((pokemon, idx) => (
+              <div key={pokemon.details.id}>
+                <PokemonCard pokemon={pokemon} />
+              </div>
             ))}
-          </ul>
+          </div>
         }
     </div>
   )

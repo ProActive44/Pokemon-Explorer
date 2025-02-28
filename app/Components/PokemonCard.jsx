@@ -3,18 +3,21 @@ import React from 'react'
 
 const PokemonCard = ({pokemon}) => {
 
+  const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.details.id}.png`;
+
     return (
         <Link href={`/pokemon/${pokemon.details.id}`} >
-        <div className='border border-gray-950 p-1 bg-blue-400 rounded flex flex-col m-auto'>
+        <div className='bg-blue-400 rounded flex flex-col m-auto'>
 
           {/* Pokemon Image */}
-          <div>
-            <img src={pokemon.details.sprites.front_default} className='w-full'/>
+          <div className='w-full m-auto'>
+            <img src={artworkUrl} className='w-full transition-transform duration-300 hover:scale-125'/>
           </div>
           
           {/* Pokemon Name*/}
-          <div className='m-auto'>
-            <h3 >{pokemon.name}</h3>
+          <div className='m-auto bg-blue-600 w-full flex flex-col justify-center items-center p-3 text-white'>
+            <p >#{pokemon.details.id}</p>
+            <h1 className='text-2xl'>{pokemon.name}</h1>
           </div>
         </div>
       </Link>
