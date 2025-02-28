@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 import {Pokemon} from "../page"
+import Image from 'next/image';
 
 type PokemonCardProps = {
   pokemon: Pokemon;
@@ -17,7 +18,8 @@ const PokemonCard : React.FC<PokemonCardProps>= ({pokemon}) => {
 
           {/* Pokemon Image */}
           <div className='w-full m-auto'>
-            <img src={artworkUrl} className='w-full transition-transform duration-300 hover:scale-125'/>
+            <Image src={artworkUrl} className='w-full transition-transform duration-300 hover:scale-125' alt={pokemon.name}
+            width={200} height={200}/>
           </div>
           
           {/* Pokemon Name*/}

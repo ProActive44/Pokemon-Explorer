@@ -1,8 +1,9 @@
 'use client'
 import LoadingSpinner from '@/app/Components/LoadingSpinner';
 import StatBar from '@/app/Components/StateBar';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 type PokemonDetail = {
@@ -109,7 +110,7 @@ const fetchPokemonDetails = async (id:string) => {
 }
 
 
-const detailsPage = () => {
+const DetailsPage = () => {
   const [pokemon, setPokemon] = useState<PokemonDetail | null>(null);
   const [species, setSpecies] = useState<PokemonSpecies | null>(null);
   const [loading, setLoading] = useState(true);
@@ -154,7 +155,7 @@ const detailsPage = () => {
     }
 
     loadPokemonData();
-  }, [])
+  }, [id])
 
 
   // If Pokemon not found
@@ -222,7 +223,8 @@ const detailsPage = () => {
                   </div>
                 </div>
                 <div className='h-full'>
-                  <img src={artworkUrl} alt={pokemon?.name} className='h-full object-contain transition-transform duration-300 hover:scale-110'/>
+                  <Image src={artworkUrl} alt={pokemon?.name} className='h-full object-contain transition-transform duration-300 hover:scale-110'
+                  width={200} height={200}/>
                 </div>
             </div>
 
@@ -381,4 +383,4 @@ const detailsPage = () => {
   )
 }
 
-export default detailsPage
+export default DetailsPage

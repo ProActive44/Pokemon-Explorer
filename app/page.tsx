@@ -4,8 +4,6 @@ import PokemonCard from "./Components/PokemonCard"
 import LoadingSpinner from './Components/LoadingSpinner';
 import SearchBar from './Components/SearchBar';
 
-import { Inter } from 'next/font/google'
-
 type PokemonDetail = {
   id: number;
   name: string;
@@ -141,7 +139,7 @@ function Home() {
             ?.filter((pokemon) =>
               pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
-            .map((pokemon, idx) => (
+            .map((pokemon) => (
               <div key={pokemon.details?.id}>
                 <PokemonCard pokemon={pokemon} />
               </div>

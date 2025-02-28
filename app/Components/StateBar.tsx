@@ -10,8 +10,7 @@ interface StatBarProps {
 const StatBar: React.FC<StatBarProps> = ({
   statName,
   value,
-  maxValue = 255,
-  color = "bg-blue-500",
+  maxValue = 255
 }) => {
 
   // Format stat name to be more readable
