@@ -1,4 +1,5 @@
 'use client'
+import LoadingSpinner from '@/app/Components/LoadingSpinner';
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
@@ -83,9 +84,14 @@ const detailsPage = () => {
 
   return (
     <div>
-      <h1>{id}</h1>
-      <h1>{data?.height}</h1>
-      Hey Pookie!!
+      {
+          loading? <LoadingSpinner/> : 
+          <div>
+            <h1>{id}</h1>
+            <h1>{data?.height}</h1>
+            Hey Pookie!!
+          </div>
+        }
     </div>
   )
 }
