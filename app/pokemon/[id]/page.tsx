@@ -297,9 +297,81 @@ const detailsPage = () => {
                       </div>
                     </div>
                   )}
+
+
+                  
+                  {activeTab === "about" && (
+                    <div className="animate-fade-in">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-4">Characteristics</h3>
+                          <div className="space-y-3">
+                            <div className="grid grid-cols-2 gap-4">
+                              <div className="text-gray-600">Height</div>
+                              <div>{(pokemon.height / 10).toFixed(1)}m</div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                              <div className="text-gray-600">Weight</div>
+                              <div>{(pokemon.weight / 10).toFixed(1)}kg</div>
+                            </div>
+                            {species?.color && (
+                              <div className="grid grid-cols-2 gap-4">
+                                <div className="text-gray-600">Color</div>
+                                <div className="capitalize">{species.color.name}</div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h3 className="text-lg font-semibold mb-4">Abilities</h3>
+                          <ul className="space-y-2">
+                            {pokemon.abilities.map((ability) => (
+                              <li key={ability.ability.name} className="flex items-start">
+                                <span className="h-5 w-5 text-gray-400 mr-2">
+                                  {ability.is_hidden ? "🔍" : "✓"}
+                                </span>
+                                <div>
+                                  <span className="font-medium capitalize">
+                                    {(ability.ability.name)}
+                                  </span>
+                                  {ability.is_hidden && (
+                                    <span className="text-xs text-gray-500 ml-2">(Hidden)</span>
+                                  )}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                 </div>
 
 
+                {activeTab === "moves" && (
+                    <div className="animate-fade-in">
+                      <h3 className="text-lg font-semibold mb-4">Moves</h3>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                        {pokemon.moves.slice(0, 20).map((moveInfo) => (
+                          <div
+                            key={moveInfo.move.name}
+                            className="px-3 py-2 bg-gray-300 rounded-lg text-center"
+                          >
+                            <span className="text-sm capitalize">
+                              {(moveInfo.move.name)}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      {pokemon.moves.length > 20 && (
+                        <p className="text-center text-gray-500 mt-4 text-sm">
+                          {pokemon.moves.length - 20} more moves not shown
+                        </p>
+                      )}
+                    </div>
+                  )}
 
 
             </div>

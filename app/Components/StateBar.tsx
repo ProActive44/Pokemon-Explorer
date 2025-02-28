@@ -13,27 +13,14 @@ const StatBar: React.FC<StatBarProps> = ({
   maxValue = 255,
   color = "bg-blue-500",
 }) => {
+
   // Format stat name to be more readable
   const formatStatName = (name: string): string => {
-    switch (name) {
-      case "hp":
-        return "HP";
-      case "attack":
-        return "Attack";
-      case "defense":
-        return "Defense";
-      case "special-attack":
-        return "Sp. Atk";
-      case "special-defense":
-        return "Sp. Def";
-      case "speed":
-        return "Speed";
-      default:
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    }
+    return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
   const percentage = Math.min((value / maxValue) * 100, 100);
+  console.log(percentage)
 
   // Determine color based on stat value
   const getStatColor = (statName: string, value: number): string => {

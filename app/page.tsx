@@ -68,7 +68,7 @@ export type Pokemon = {
 }
 
 const fetchData = async() : Promise<Pokemon[]> => {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15')
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     const data = await res.json();
     return data.results;
 }
@@ -114,6 +114,7 @@ function Home() {
     }, [])
 
     const handleSearchChange = (value: string)=>{
+      if(value != " ")
         setSearchTerm(value)
     }
 
