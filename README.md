@@ -23,7 +23,7 @@ Check out the deployed version of the app: 🔗 🔗 **[Pokémon Explorer](https
 
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/ProActive44/next-app.git
+git clone https://github.com/ProActive44/Pokemon-Explorer.git
 cd next-app
 ```
 
